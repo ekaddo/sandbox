@@ -1,3 +1,846 @@
-<html>
-  Test Page
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walter T. Johnson III | Guilford County Commissioner District 7</title>
+    <style>
+        :root {
+            --primary-color: #4B0082;
+            --accent-color: #FFD700;
+            --text-dark: #1a1a1a;
+            --text-light: #f5f5f5;
+            --border-color: #ddd;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: #f9f9f9;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #5a0099 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #5a0099 100%);
+            color: white;
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-tagline {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            background: var(--accent-color);
+            color: var(--primary-color);
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 0.5rem;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .section {
+            padding: 3rem 1rem;
+            background: white;
+            margin: 2rem 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .section h2 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .section h3 {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color);
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+        }
+
+        .card h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(75, 0, 130, 0.05) 0%, rgba(255, 215, 0, 0.05) 100%);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 2px solid var(--accent-color);
+            margin: 1.5rem 0;
+        }
+
+        .candidate-intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+            margin: 2rem 0;
+        }
+
+        .candidate-photo {
+            text-align: center;
+        }
+
+        .candidate-photo img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .key-dates {
+            background: #f0f0f0;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .date-item {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .date-item:last-child {
+            border-bottom: none;
+        }
+
+        .date-label {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .zip-codes {
+            columns: 2;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .zip-code-item {
+            background: white;
+            padding: 0.8rem;
+            margin-bottom: 0.8rem;
+            border-radius: 4px;
+            border: 1px solid var(--accent-color);
+            break-inside: avoid;
+        }
+
+        .resource-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .resource-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 2px solid var(--primary-color);
+            text-align: center;
+        }
+
+        .resource-card a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--primary-color);
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .resource-card a:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .platform-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .platform-list li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        .platform-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .experience-timeline {
+            position: relative;
+            margin: 2rem 0;
+        }
+
+        .timeline-item {
+            padding-left: 2rem;
+            padding-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .timeline-item:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            width: 12px;
+            height: 12px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            top: 5px;
+            border: 2px solid var(--primary-color);
+        }
+
+        .timeline-item:not(:last-child):after {
+            content: "";
+            position: absolute;
+            left: 5px;
+            width: 2px;
+            height: 100%;
+            background: var(--accent-color);
+            top: 20px;
+        }
+
+        .donation-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #5a0099 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 8px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .donation-section h3 {
+            color: var(--accent-color);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(75, 0, 130, 0.1);
+        }
+
+        .submit-button {
+            background: var(--accent-color);
+            color: var(--primary-color);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        .contact-info {
+            margin: 1rem 0;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-tagline {
+                font-size: 1.2rem;
+            }
+
+            nav ul {
+                gap: 0.8rem;
+            }
+
+            .candidate-intro {
+                grid-template-columns: 1fr;
+            }
+
+            .date-item {
+                grid-template-columns: 1fr;
+            }
+
+            .zip-codes {
+                columns: 1;
+            }
+
+            .cta-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav>
+            <a href="#home" class="logo">Walter T. Johnson III</a>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#platform">Platform</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#voting">Voting Info</a></li>
+                <li><a href="#donate">Donate</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Vote Walter T. Johnson III</h1>
+            <p class="hero-tagline">A Better Plan For A Better Community</p>
+            <p class="hero-subtitle">Candidate for Guilford County Commissioner<br>District 7</p>
+            <button class="cta-button" onclick="document.getElementById('donate').scrollIntoView({behavior: 'smooth'})">Support the Campaign</button>
+            <button class="cta-button" onclick="document.getElementById('voting').scrollIntoView({behavior: 'smooth'})">Voting Information</button>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- About Section -->
+        <section class="section" id="about">
+            <h2>About Walter T. Johnson III</h2>
+            <div class="candidate-intro">
+                <div class="candidate-photo">
+                    <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/5f1dce89-f7f8-4e89-8944-63d80bf4d09d" alt="Walter T. Johnson III">
+                </div>
+                <div>
+                    <p>Walter T. Johnson III is a dedicated community leader with deep roots in Greensboro. A native of our city and proud graduate of both Dudley High School and North Carolina A&T State University, Walter has devoted his life to serving and strengthening our community.</p>
+                    
+                    <h3>Personal Background</h3>
+                    <ul class="platform-list">
+                        <li><strong>Greensboro Native</strong> - Lifelong resident with deep community connections</li>
+                        <li><strong>Dudley High School Graduate</strong> - Educated in the GSO public school system</li>
+                        <li><strong>NCA&T Graduate</strong> - North Carolina A&T State University alumnus</li>
+                        <li><strong>Collegiate Baseball Player</strong> - Understanding the value of teamwork and dedication</li>
+                        <li><strong>Youth Coach</strong> - 16 years coaching youth basketball and soccer</li>
+                        <li><strong>High School Teacher</strong> - 20 years inspiring the next generation</li>
+                        <li><strong>Active Church Member</strong> - Providence Baptist Church</li>
+                        <li><strong>Entrepreneur</strong> - 30 years creating over $3M in economic development</li>
+                    </ul>
+
+                    <h3>Community Contributions</h3>
+                    <p>As an entrepreneur, Walter has promoted numerous events throughout Greensboro, including boxing events and high school football. He has served as a host for Friday night high school football, bringing the community together. His parents also served the Greensboro community, instilling in Walter the importance of public service and civic engagement.</p>
+
+                    <h3>Leadership Experience</h3>
+                    <ul class="platform-list">
+                        <li>20 Years as High School Business Teacher</li>
+                        <li>3 Year Member - Guilford County Parks & Recreation Commission</li>
+                        <li>4 Years Experience in Affordable Housing</li>
+                        <li>$3M+ in Economic Development as Entrepreneur</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Platform Section -->
+        <section class="section" id="platform">
+            <h2>Campaign Platform</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">Walter is committed to creating positive change in District 7 and Guilford County:</p>
+            
+            <ul class="platform-list">
+                <li><strong>Recruit Jobs with Livable Wages</strong> - Bring quality employment opportunities to our district that allow families to thrive</li>
+                <li><strong>Increase Funding for Schools</strong> - Ensure our children have the resources and support they need to succeed</li>
+                <li><strong>Invest in Youth Job Programs & Community Programs</strong> - Provide pathways for young people to develop skills and build their futures</li>
+                <li><strong>Support Law Enforcement</strong> - Strengthen public safety and community security</li>
+            </ul>
+
+            <div class="highlight-box">
+                <h3>Why Walter?</h3>
+                <p>With 20 years of teaching experience, Walter understands the challenges our youth face. As an entrepreneur who created over $3 million in economic development, he knows how to create jobs. His work in affordable housing and on the Parks & Recreation Commission demonstrates his commitment to community improvement. Walter brings proven leadership, deep community roots, and a genuine passion for making Guilford County better.</p>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="section" id="experience">
+            <h2>Experience & Leadership</h2>
+            
+            <div class="experience-timeline">
+                <div class="timeline-item">
+                    <h4>High School Business Teacher (20 Years)</h4>
+                    <p>Directly impacting student success and workforce development in Guilford County schools</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h4>Youth Coach (16 Years)</h4>
+                    <p>Coached basketball and soccer, developing young athletes and community leaders</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h4>Parks & Recreation Commission Member (3 Years)</h4>
+                    <p>Advocated for quality recreational opportunities and community resources</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h4>Affordable Housing Experience (4 Years)</h4>
+                    <p>Worked to ensure families have access to quality, affordable housing</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h4>Entrepreneur (30 Years)</h4>
+                    <p>Created over $3 million in economic development, demonstrating job creation and business leadership</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h4>Community Event Producer</h4>
+                    <p>Promoted boxing events, hosted Friday night high school football, and brought the community together</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Education</h3>
+                <ul class="platform-list">
+                    <li>Dudley High School Graduate</li>
+                    <li>North Carolina A&T State University Graduate</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Voting Information Section -->
+        <section class="section" id="voting">
+            <h2>Voting Information & Key Dates</h2>
+            
+            <div class="key-dates">
+                <h3>Important Deadlines & Dates (2026)</h3>
+                
+                <div class="date-item">
+                    <div class="date-label">Dec 19, 2025</div>
+                    <div>Candidate Filing Deadline</div>
+                </div>
+                
+                <div class="date-item">
+                    <div class="date-label">Feb 6, 2026</div>
+                    <div>Voter Registration Deadline (Primary)</div>
+                </div>
+                
+                <div class="date-item">
+                    <div class="date-label">Feb 12-28, 2026</div>
+                    <div>Early Voting for Primary</div>
+                </div>
+                
+                <div class="date-item">
+                    <div class="date-label">Mar 3, 2026</div>
+                    <div><strong>Democratic Primary Election</strong></div>
+                </div>
+                
+                <div class="date-item">
+                    <div class="date-label">Nov 3, 2026</div>
+                    <div><strong>General Election Day</strong></div>
+                </div>
+            </div>
+
+            <h3>District 7 Coverage Areas</h3>
+            <p style="margin-bottom: 1rem;">District 7 encompasses parts of Pleasant Garden, southeastern Guilford County, and sections of eastern Greensboro.</p>
+            
+            <div class="zip-codes">
+                <div class="zip-code-item">27310 - Oak Ridge</div>
+                <div class="zip-code-item">27358 - Summerfield</div>
+                <div class="zip-code-item">27377 - Whitsett</div>
+                <div class="zip-code-item">27406 - Greensboro</div>
+                <div class="zip-code-item">27407 - Greensboro</div>
+                <div class="zip-code-item">27409 - Greensboro</div>
+                <div class="zip-code-item">27410 - Greensboro</div>
+            </div>
+
+            <h3>How to Register to Vote</h3>
+            <div class="grid">
+                <div class="card">
+                    <h4>Online Registration</h4>
+                    <p>Register online at <strong>ncsbe.gov</strong> before the deadline. Must be completed by February 6, 2026 for the primary.</p>
+                </div>
+                
+                <div class="card">
+                    <h4>In-Person Registration</h4>
+                    <p>Visit your local Guilford County Board of Elections office or register through voter registration drives.</p>
+                </div>
+                
+                <div class="card">
+                    <h4>Same-Day Registration</h4>
+                    <p>Register and vote the same day during early voting (Feb 12-28) if you missed the registration deadline.</p>
+                </div>
+            </div>
+
+            <h3>Voting Methods</h3>
+            <div class="grid">
+                <div class="card">
+                    <h4>Early Voting</h4>
+                    <p><strong>February 12-28, 2026</strong><br>Vote before Election Day at designated locations. Check guilfordcountync.gov for site hours.</p>
+                </div>
+                
+                <div class="card">
+                    <h4>Absentee Ballots</h4>
+                    <p>Request an absentee ballot to vote by mail. Ballots available starting January 12, 2026.</p>
+                </div>
+                
+                <div class="card">
+                    <h4>Election Day Voting</h4>
+                    <p><strong>March 3, 2026 (Primary)</strong><br>Polls open 6:30 AM - 7:30 PM. Bring valid ID to your assigned polling place.</p>
+                </div>
+            </div>
+
+            <h3>Helpful Resources</h3>
+            <div class="resource-links">
+                <div class="resource-card">
+                    <h4>Check Voter Registration</h4>
+                    <p>Verify you're registered and find your polling place</p>
+                    <a href="https://www.ncsbe.gov" target="_blank">NCSBE.gov</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h4>Guilford County Elections</h4>
+                    <p>Local election information and voting locations</p>
+                    <a href="https://www.guilfordcountync.gov/government/board-elections" target="_blank">GuilfordCountyNC.gov</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h4>Voter Registration</h4>
+                    <p>Register to vote or check registration status</p>
+                    <a href="https://vt.ncsbe.gov/RegStatus/" target="_blank">Check Registration</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- County Information Section -->
+        <section class="section">
+            <h2>About Guilford County</h2>
+            
+            <div class="grid">
+                <div class="card">
+                    <h4>Population</h4>
+                    <p>Over <strong>541,000</strong> residents with growing diversity and family-oriented communities</p>
+                </div>
+                
+                <div class="card">
+                    <h4>Economic Hub</h4>
+                    <p>Home to diverse industries and businesses creating thousands of jobs across sectors</p>
+                </div>
+                
+                <div class="card">
+                    <h4>Education</h4>
+                    <p>Guilford County Schools serves the region with numerous high schools, middle schools, and elementary schools</p>
+                </div>
+                
+                <div class="card">
+                    <h4>Recreation</h4>
+                    <p>Parks and recreation commission oversees facilities and programs for families and youth</p>
+                </div>
+            </div>
+
+            <h3>What the County Commission Influences</h3>
+            <p>As a member of the Guilford County Board of Commissioners, Walter would help shape policy on:</p>
+            
+            <ul class="platform-list">
+                <li>Economic development and job creation initiatives</li>
+                <li>County school funding and education quality</li>
+                <li>Parks, recreation, and community facilities</li>
+                <li>Housing and affordable living solutions</li>
+                <li>Public safety and law enforcement support</li>
+                <li>County services and infrastructure</li>
+                <li>Budget allocation and fiscal responsibility</li>
+            </ul>
+        </section>
+
+        <!-- Donation Section -->
+        <section class="donation-section" id="donate">
+            <h3>Support the Campaign</h3>
+            <p style="margin-bottom: 2rem; font-size: 1.1rem;">Help Walter T. Johnson III bring positive change to Guilford County. Your contribution makes a difference!</p>
+            
+            <form id="donationForm" onsubmit="handleDonation(event)">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="tel" name="phone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>ZIP Code *</label>
+                        <input type="text" name="zip" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Donation Amount *</label>
+                    <select name="amount" required>
+                        <option value="">Select Amount</option>
+                        <option value="25">$25</option>
+                        <option value="50">$50</option>
+                        <option value="100">$100</option>
+                        <option value="250">$250</option>
+                        <option value="500">$500</option>
+                        <option value="other">Other Amount</option>
+                    </select>
+                </div>
+
+                <div id="customAmount" class="form-group" style="display:none;">
+                    <label>Enter Custom Amount *</label>
+                    <input type="number" name="customAmount" min="1" step="0.01">
+                </div>
+
+                <div class="form-group">
+                    <label>Message (Optional)</label>
+                    <textarea name="message" placeholder="Share why you're supporting Walter..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-button">Make a Donation</button>
+                <p style="font-size: 0.9rem; margin-top: 1rem; opacity: 0.9;">Paid for by the Committee to Elect Walter T. Johnson III</p>
+            </form>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Vote Walter T. Johnson III</h3>
+        <p><strong>Guilford County Commissioner | District 7</strong></p>
+        
+        <div class="contact-info">
+            <p>Greensboro, North Carolina</p>
+            <p>A Better Plan For A Better Community</p>
+        </div>
+
+        <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.3);">
+            <p style="font-style: italic;">Paid for by the Committee to Elect Walter T. Johnson III</p>
+            <p style="font-size: 0.85rem; margin-top: 0.5rem;">© 2025-2026. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Show/hide custom amount field
+        const amountSelect = document.querySelector('select[name="amount"]');
+        const customAmountDiv = document.getElementById('customAmount');
+
+        amountSelect.addEventListener('change', function() {
+            if (this.value === 'other') {
+                customAmountDiv.style.display = 'block';
+                document.querySelector('input[name="customAmount"]').required = true;
+            } else {
+                customAmountDiv.style.display = 'none';
+                document.querySelector('input[name="customAmount"]').required = false;
+            }
+        });
+
+        // Handle donation form submission
+        function handleDonation(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const phone = formData.get('phone');
+            const zip = formData.get('zip');
+            const amount = formData.get('amount') === 'other' ? formData.get('customAmount') : formData.get('amount');
+            const message = formData.get('message');
+            
+            // Create a summary
+            const summary = `Thank you, ${name}! Your donation of $${amount} has been recorded.\n\nWe will contact you at ${email}${phone ? ' or ' + phone : ''} to confirm.\n\nTogether, we're building a better community!`;
+            
+            alert(summary);
+            
+            // Reset form
+            event.target.reset();
+            customAmountDiv.style.display = 'none';
+        }
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#home') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
 </html>
