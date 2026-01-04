@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  # Nginx Web Server
+  nginx:
+    image: nginx:alpine
+    container_name: nginx-webserver
+    ports:
+      - "8888:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./www:/var/www/html
+    depends_on:
+      - php
+    networks:
+      - webapp-network
+
+  # PHP-FPM for backend processing
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile.php
+    container_name: php-backend
+    volumes:
+      - ./www:/var/www/html
+    networks:
+      - webapp-network
+    depends_on:
+      - postgres
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=contactsdb
+      - DB_USER=webappuser
+      - DB_PASS=webapppass
+
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: postgres-db
+    environment:
+      POSTGRES_DB: contactsdb
+      POSTGRES_USER: webappuser
+      POSTGRES_PASSWORD: webapppass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./init-db:/docker-entrypoint-initdb.d
+    networks:
+      - webapp-network
+
+volumes:
+  postgres-data:
+
+networks:
+  webapp-network:
+    driver: bridge
